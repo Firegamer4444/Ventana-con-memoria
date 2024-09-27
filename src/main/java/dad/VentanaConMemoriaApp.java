@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -70,9 +71,9 @@ public class VentanaConMemoriaApp extends Application {
             height.set(200);
             x.set(0);
             y.set(0);
-            red.set(0);
-            green.set(0);
-            blue.set(0);
+            red.set(255);
+            green.set(255);
+            blue.set(255);
         }
 
     }
@@ -88,8 +89,9 @@ public class VentanaConMemoriaApp extends Application {
         redSlider.setMajorTickUnit(255);
         redSlider.setMinorTickCount(5);
 
-        redLabel = new Label("red");
+        redLabel = new Label("Red");
 
+        HBox redHbox = new HBox(redLabel , redSlider);
 
         greenSlider = new Slider();
         greenSlider.setMin(0);
@@ -99,6 +101,10 @@ public class VentanaConMemoriaApp extends Application {
         greenSlider.setMajorTickUnit(255);
         greenSlider.setMinorTickCount(5);
 
+        greenLabel = new Label("Green");
+
+        HBox greenHbox = new HBox(greenLabel , greenSlider);
+
         blueSlider = new Slider();
         blueSlider.setMin(0);
         blueSlider.setMax(255);
@@ -107,7 +113,11 @@ public class VentanaConMemoriaApp extends Application {
         blueSlider.setMajorTickUnit(255);
         blueSlider.setMinorTickCount(5);
 
-        VBox root = new VBox(5 , redSlider , greenSlider , blueSlider);
+        blueLabel = new Label("Blue");
+
+        HBox blueHbox = new HBox(blueLabel , blueSlider);
+
+        VBox root = new VBox(5 ,redHbox , greenHbox , blueHbox);
         root.setFillWidth(false);
         root.setAlignment(Pos.CENTER);
         root.setBackground(Background.fill(Color.rgb(red.getValue() , green.getValue() , blue.getValue())));
